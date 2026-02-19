@@ -1,0 +1,16 @@
+<%- include("layout", { title: title, body: `
+  <div class="p-4 bg-white rounded shadow-sm">
+    <h1 class="h3 mb-2">Frontend Pevisa (Node + Express + Bootstrap)</h1>
+    <p class="text-muted mb-3">
+      Este frontend consume el backend Flask (API REST) y muestra módulos: Proveedores, Clientes, Rutas y Reportes.
+    </p>
+
+    <div class="alert alert-info">
+      API Base URL configurada: <b>${apiBaseUrl}</b>
+    </div>
+
+    <p class="mb-0">
+      Siguiente paso: construir la vista de <b>Proveedores</b> consumiendo <code>/api/proveedores</code>.
+    </p>
+  </div>
+`}) %>
