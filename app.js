@@ -32,6 +32,12 @@ app.get("/clientes", (req, res) => {
   });
 });
 
+app.get("/rutas", (req, res) => {
+  res.render("rutas", {
+    title: "Rutas",
+    apiBaseUrl: process.env.API_BASE_URL,
+  });
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

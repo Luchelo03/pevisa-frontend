@@ -1,0 +1,92 @@
+<%- include("layout", { title: title, body: `
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <div>
+      <h1 class="h3 mb-1">Rutas (Despachos)</h1>
+      <div class="text-muted">Tabla + modal con mapa (Leaflet)</div>
+    </div>
+    <button class="btn btn-outline-secondary" id="btnRefrescar">Refrescar</button>
+  </div>
+
+  <div id="alertBox"></div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead>
+            <tr>
+              <th>Orden</th>
+              <th>Descripción</th>
+              <th>Origen</th>
+              <th>Destino</th>
+              <th>Estado</th>
+              <th class="text-end">Mapa</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyRutas">
+            <tr>
+              <td colspan="6" class="text-center text-muted py-4">Cargando...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Mapa -->
+  <div class="modal fade" id="mapModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h5 class="modal-title">Ruta del despacho <span id="mDespachoId"></span></h5>
+            <div class="text-muted small" id="mResumen"></div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-lg-8">
+              <div id="map" style="height: 460px;" class="rounded border"></div>
+              <div class="small text-muted mt-2">
+                * Usamos Leaflet + OpenStreetMap. Ruta calculada con OSRM (si está disponible).
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="bg-light border rounded p-3">
+                <div class="fw-semibold mb-2">Detalle del despacho</div>
+                <ul class="list-group" id="mDetalle">
+                  <li class="list-group-item text-muted">Cargando detalle...</li>
+                </ul>
+              </div>
+
+              <div class="mt-3 bg-light border rounded p-3">
+                <div class="fw-semibold mb-2">Puntos</div>
+                <div class="small" id="mPuntos"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.API_BASE_URL = "${apiBaseUrl}";
+  </script>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/js/rutas.js"></script>
+`}) %>
