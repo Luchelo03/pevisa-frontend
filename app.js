@@ -18,6 +18,21 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/proveedores", (req, res) => {
+  res.render("proveedores", {
+    title: "Proveedores",
+    apiBaseUrl: process.env.API_BASE_URL,
+  });
+});
+
+app.get("/clientes", (req, res) => {
+  res.render("clientes", {
+    title: "Clientes",
+    apiBaseUrl: process.env.API_BASE_URL,
+  });
+});
+
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Frontend running on http://localhost:${port}`);
