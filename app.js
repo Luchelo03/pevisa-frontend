@@ -39,6 +39,14 @@ app.get("/rutas", (req, res) => {
   });
 });
 
+app.get("/reportes", (req, res) => {
+  res.render("reportes", {
+    title: "Reportes",
+    apiBaseUrl: process.env.API_BASE_URL,
+  });
+});
+
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Frontend running on http://localhost:${port}`);
